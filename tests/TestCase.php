@@ -1,0 +1,36 @@
+<?php
+
+namespace Biztory\Storefront\Tests;
+
+use Biztory\Storefront\StorefrontServiceProvider;
+use Illuminate\Database\Eloquent\Factories\Factory;
+use Orchestra\Testbench\TestCase as Orchestra;
+
+class TestCase extends Orchestra
+{
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        Factory::guessFactoryNamesUsing(
+            fn (string $modelName) => 'Biztory\\Storefront\\Database\\Factories\\'.class_basename($modelName).'Factory'
+        );
+    }
+
+    protected function getPackageProviders($app)
+    {
+        return [
+            StorefrontServiceProvider::class,
+        ];
+    }
+
+    public function getEnvironmentSetUp($app)
+    {
+        config()->set('database.default', 'testing');
+
+        /*
+        $migration = include __DIR__.'/../database/migrations/create_storefront_table.php.stub';
+        $migration->up();
+        */
+    }
+}

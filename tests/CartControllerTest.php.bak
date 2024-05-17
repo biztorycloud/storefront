@@ -1,0 +1,74 @@
+<?php
+
+namespace Biztory\Storefront\Tests\Feature;
+
+use Tests\TestCase;
+use Biztory\Storefront\DTO\CartData;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\RefreshDatabaseState;
+
+class CartControllerTest extends TestCase
+{
+    use RefreshDatabase;
+
+    public function beforeRefreshingDatabase(): void
+    {
+        RefreshDatabaseState::$migrated = true;
+    }
+
+    public function testGetCart(): void
+    {
+        $response = $this->get('/storefront/cart');
+        $response->assertStatus(200);
+        // $response->assertJsonStructure([
+        //     'code',
+        //     'message',
+        //     'data' => [
+        //         'items' => [
+        //             '*' => [
+        //                 'id',
+        //                 'name',
+        //                 'price',
+        //                 'quantity',
+        //             ],
+        //         ],
+        //     ],
+        // ]);
+    }
+
+    public function testSetCart(): void
+    {
+        $response = $this->post('/storefront/cart', [
+            'items' => [
+                [
+                    'id' => 1,
+                    'quantity' => 2,
+                    'name' => 'Product 1',
+                    'price' => 100,
+                ],
+                [
+                    'id' => 2,
+                    'quantity' => 1,
+                    'name' => 'Product 2',
+                    'price' => 200,
+                ],
+            ],
+        ]);
+        $response->assertCreated();
+        $response->assertJsonStructure([
+            'code',
+            'message',
+            'data' => [
+                'items' => [
+                    '*' => [
+                        'id',
+                        'name',
+                        'price',
+                        'quantity',
+                    ],
+                ],
+            ],
+        ]);
+    }
+}
