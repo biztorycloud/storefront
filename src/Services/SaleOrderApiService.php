@@ -20,7 +20,7 @@ class SaleOrderApiService extends BaseApiService
             ...$data->except('payment_term', 'discount', 'service_charge')->toArray(),
             // payment_term handling
             'payment_term' => $data->payment_term,
-            'sal_type' => $data->doc_type->value,
+            'doc_type' => $data->doc_type->value,
             // extra handling
             ...(class_basename($data->currency_iso) !== 'Optional' ? [
                 'currency' => [
