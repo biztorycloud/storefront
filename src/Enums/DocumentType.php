@@ -4,7 +4,8 @@ namespace Biztory\Storefront\Enums;
 
 enum DocumentType: string
 {
-    case SaleOrder = 'SaleOrder';
-    case Invoice = 'Invoice';
-    case Quote = 'Quote';
+    case Cash = '/cashsale';
+    case Extra1 = 'extra_1';
+    case Extra2 = 'extra_2';
+    case Normal = 'normal';
 }

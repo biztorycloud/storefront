@@ -6,11 +6,8 @@ use Biztory\Storefront\DTO\Services\SaleOrderData;
 use Biztory\Storefront\DTO\Services\SaleOrderItemData;
 use Biztory\Storefront\DTO\StoreOrderData;
 use Biztory\Storefront\DTO\StoreOrderItemData;
-use Biztory\Storefront\Enums\DocumentType;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Http;
-use Spatie\LaravelData\Data;
 use Spatie\LaravelData\Lazy;
 
 class SaleOrderApiService extends BaseApiService
@@ -18,11 +15,12 @@ class SaleOrderApiService extends BaseApiService
     public function createPayload(StoreOrderData $data): SaleOrderData
     {
         // create payload for the order
-        return SaleOrderData::from([
+        return SaleOrderData::validateAndCreate([
             // everything except payment_term
             ...$data->except('payment_term', 'discount', 'service_charge')->toArray(),
             // payment_term handling
             'payment_term' => $data->payment_term,
+            'sal_type' => $data->doc_type->value,
             // extra handling
             ...(class_basename($data->currency_iso) !== 'Optional' ? [
                 'currency' => [

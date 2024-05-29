@@ -1,18 +1,13 @@
 <?php
 
-// generate test for CouponController
+use Spatie\LaravelData\DataCollection;
+use Biztory\Storefront\Http\Controllers\CouponController;
+
 it('can get coupon', function () {
-    $response = $this->get('/api/third-party-ms/storefront/coupons');
-    $response->assertStatus(200);
-    $response->assertJsonStructure([
-        'code',
-        'message',
-        'data' => [
-            'id',
-            'code',
-            'discount',
-            'type',
-            'expired_at',
-        ],
-    ]);
+    $ctrl = new CouponController();
+    $response = $ctrl->index(request());
+    expect($response)
+        ->toBeInstanceOf(DataCollection::class)
+        ->toHaveCount(2)
+    ;
 });

@@ -11,6 +11,7 @@ use Biztory\Storefront\DTO\Services\DiscountServiceChargeData;
 use Biztory\Storefront\DTO\Services\ScheduledTransactionData;
 use Biztory\Storefront\Enums\ApprovalStatus;
 use Biztory\Storefront\Enums\CurrencyCode;
+use Biztory\Storefront\Enums\Document;
 use Biztory\Storefront\Enums\DocumentType;
 use Biztory\Storefront\Enums\PaymentTermUnitText;
 use Carbon\Carbon;
@@ -33,7 +34,8 @@ class StoreOrderData extends Data
 
     public function __construct(
         public Optional|int $id,
-        public ?DocumentType $type,
+        public Document|Optional $type,
+        public DocumentType|Optional $doc_type,
         public Optional|string $ref_num,
         #[Date]
         public string $invoice_date,
@@ -95,7 +97,8 @@ class StoreOrderData extends Data
         $this->payment_term_id = $payment_term_id ?? $defaults->default_payment_term_id;
         $this->payment_term = $this->getPaymentTerm($this->payment_term_id);
         $this->terms = $this->payment_term ? $this->getPaymentTermSchedules($this->payment_term) : $terms;
-        $this->type = $type ?? $defaults->default_document_type;
+        $this->type = $defaults->default_document;
+        $this->doc_type = $defaults->default_document_types[$this->type->value];
         $this->status = $status ?? ApprovalStatus::Active;
         $this->tax_inclusive = ! is_null($tax_inclusive) ? $tax_inclusive : true;
         $this->billing_attn = $billing_attn ?? $this->payee;

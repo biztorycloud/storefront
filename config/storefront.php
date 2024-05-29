@@ -1,6 +1,7 @@
 <?php
 
 use Biztory\Storefront\Enums\CurrencyCode;
+use Biztory\Storefront\Enums\Document;
 use Biztory\Storefront\Enums\DocumentType;
 
 // config for Biztory/Storefront
@@ -14,7 +15,13 @@ return [
 
     'default_currency' => CurrencyCode::MYR,
 
-    'default_document_type' => DocumentType::SaleOrder,
+    'default_document' => Document::SaleOrder,
+
+    'default_document_types' => [
+        Document::SaleOrder->value => DocumentType::Normal->value,
+        Document::Invoice->value => DocumentType::Normal->value,
+        Document::Quote->value => DocumentType::Normal->value,
+    ],
 
     'enable_guest_checkout' => false,
 

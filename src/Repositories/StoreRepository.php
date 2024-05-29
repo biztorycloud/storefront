@@ -10,7 +10,7 @@ use Biztory\Storefront\Contracts\StoreRepositoryInterface;
 use Biztory\Storefront\DTO\NotificationSettingsData;
 use Biztory\Storefront\DTO\StoreOrderData;
 use Biztory\Storefront\DTO\StoreSettingsData;
-use Biztory\Storefront\Enums\DocumentType;
+use Biztory\Storefront\Enums\Document;
 use Biztory\Storefront\Events\OrderPlaced;
 use Biztory\Storefront\Services\SaleOrderApiService;
 use Illuminate\Support\Facades\Cache;
@@ -47,7 +47,7 @@ class StoreRepository implements StoreRepositoryInterface
             // TODO:
             // 'invoice' => new InvoiceService(),
             // 'quote' => new QuoteService(),
-            DocumentType::SaleOrder => new SaleOrderApiService(),
+            Document::SaleOrder => new SaleOrderApiService(),
             default => throw new \Exception('Invalid document type'),
         };
         $response = $api->store($payload);
@@ -72,7 +72,8 @@ class StoreRepository implements StoreRepositoryInterface
                 'default_author_id' => User::owner()->id,
                 'default_source_custom_field' => config('storefront.default_source_custom_field'),
                 'default_currency' => config('storefront.default_currency'),
-                'default_document_type' => config('storefront.default_document_type'),
+                'default_document' => config('storefront.default_document'),
+                'default_document_types' => config('storefront.default_document_types'),
                 'enable_guest_checkout' => config('storefront.enable_guest_checkout'),
                 'enable_postpaid' => config('storefront.enable_postpaid'),
                 'notifications' => NotificationSettingsData::from([]),

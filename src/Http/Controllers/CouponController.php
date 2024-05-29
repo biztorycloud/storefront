@@ -16,7 +16,7 @@ class CouponController extends Controller
     }
 
     /**
-     * @return DataCollectionOf<CouponData>
+     * @return DataCollection<CouponData>
      */
     public function index(Request $request): DataCollection
     {

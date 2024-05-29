@@ -7,6 +7,7 @@ use Biztory\Storefront\Enums\RoundingMode;
 use Spatie\LaravelData\Attributes\DataCollectionOf;
 use Spatie\LaravelData\Attributes\Validation\Date;
 use Spatie\LaravelData\Attributes\Validation\Email;
+use Spatie\LaravelData\Attributes\Validation\In;
 use Spatie\LaravelData\Attributes\Validation\Max;
 use Spatie\LaravelData\Attributes\Validation\RequiredIf;
 use Spatie\LaravelData\Data;
@@ -19,6 +20,8 @@ class SaleOrderData extends Data
     public function __construct(
         public Optional|int $id,
         public Optional|string $ref_num,
+        #[In('/cashsale', 'extra_1', 'extra_2', 'normal')]
+        public Optional|string $sal_type,
         #[Date]
         public string $invoice_date,
         #[Date]
