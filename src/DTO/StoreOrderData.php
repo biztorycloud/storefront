@@ -51,7 +51,7 @@ class StoreOrderData extends Data
          */
         // public array|Optional $meta,
         #[Exists(User::class, 'id', null, true)]
-        public int|null|Optional $staff_id,
+        public int|null $staff_id,
         #[Min(0)]
         public ?float $currency_total,
         public string $billing_addr_1,
