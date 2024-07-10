@@ -98,7 +98,7 @@ class StoreOrderData extends Data
         $this->payment_term = $this->getPaymentTerm($this->payment_term_id);
         $this->terms = $this->payment_term ? $this->getPaymentTermSchedules($this->payment_term) : $terms;
         $this->type = $defaults->default_document;
-        $this->doc_type = $defaults->default_document_types[$this->type->value];
+        $this->doc_type = DocumentType::tryFrom($defaults->default_document_types[$this->type->value]);
         $this->status = $status ?? ApprovalStatus::Active;
         $this->tax_inclusive = ! is_null($tax_inclusive) ? $tax_inclusive : true;
         $this->billing_attn = $billing_attn ?? $this->payee;

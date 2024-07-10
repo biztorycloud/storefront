@@ -2,9 +2,10 @@
 
 namespace Biztory\Storefront\DTO\Services;
 
+use Faker\Factory;
+use Spatie\LaravelData\Data;
 use Spatie\LaravelData\Attributes\Validation\In;
 use Spatie\LaravelData\Attributes\Validation\Min;
-use Spatie\LaravelData\Data;
 
 class DiscountServiceChargeData extends Data
 {
@@ -21,5 +22,19 @@ class DiscountServiceChargeData extends Data
         public float $total,
         public bool $shown = false,
     ) {
+    }
+
+    public static function fake(): self
+    {
+        $faker = Factory::create();
+
+        return new self(
+            label: $faker->randomElement(['%', 'MYR']),
+            tax: $faker->randomFloat(2, 0, 100),
+            value: $faker->randomFloat(2, 0, 100),
+            tax_amt: $faker->randomFloat(2, 0, 100),
+            total: $faker->randomFloat(2, 0, 100),
+            shown: $faker->boolean,
+        );
     }
 }

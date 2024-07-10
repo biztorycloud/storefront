@@ -32,6 +32,9 @@ class StorefrontServiceProvider extends PackageServiceProvider
 
     public function packageRegistered()
     {
+        // Register any other service providers needed
+        $this->app->register(\Spatie\LaravelData\LaravelDataServiceProvider::class);
+        
         $this->app->bind(StoreRepositoryInterface::class, StoreRepository::class);
         $this->app->bind(CartRepositoryInterface::class, CartRepository::class);
     }

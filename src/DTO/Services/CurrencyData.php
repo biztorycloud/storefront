@@ -2,8 +2,9 @@
 
 namespace Biztory\Storefront\DTO\Services;
 
-use Biztory\Storefront\Enums\CurrencyCode;
+use Faker\Factory;
 use Spatie\LaravelData\Data;
+use Biztory\Storefront\Enums\CurrencyCode;
 
 class CurrencyData extends Data
 {
@@ -18,6 +19,17 @@ class CurrencyData extends Data
     {
         return new self(
             iso: CurrencyCode::from($iso),
+        );
+    }
+
+    public static function fake(): self
+    {
+        $faker = Factory::create();
+
+        return new self(
+            iso: CurrencyCode::from($faker->currencyCode),
+            exchange_rate: $faker->randomFloat(4, 0.5, 2),
+            is_based: $faker->boolean,
         );
     }
 }

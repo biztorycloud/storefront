@@ -2,10 +2,12 @@
 
 namespace Biztory\Storefront\DTO\Services;
 
-use Spatie\LaravelData\Attributes\Validation\Date;
-use Spatie\LaravelData\Attributes\Validation\Max;
+use Faker\Factory;
 use Spatie\LaravelData\Data;
 use Spatie\LaravelData\Optional;
+use Spatie\LaravelData\Attributes\Validation\Max;
+use Spatie\LaravelData\Attributes\Validation\Date;
+use Spatie\LaravelData\DataCollection;
 
 class ScheduledTransactionData extends Data
 {
@@ -18,5 +20,24 @@ class ScheduledTransactionData extends Data
         #[Max(255)]
         public Optional|string $remark,
     ) {
+    }
+
+    public static function fake(): self
+    {
+        $faker = Factory::create();
+
+        return new self(
+            date: $faker->date(),
+            amount: $faker->randomFloat(2, 0, 9999999),
+            id: new Optional,
+            remark: $faker->sentence(5),
+        );
+    }
+
+    public static function fakeCollection(): DataCollection
+    {
+        return self::collection(
+            array_fill(0, random_int(1, 2), self::fake())
+        );
     }
 }

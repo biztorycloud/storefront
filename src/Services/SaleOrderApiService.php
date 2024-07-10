@@ -2,13 +2,15 @@
 
 namespace Biztory\Storefront\Services;
 
-use Biztory\Storefront\DTO\Services\SaleOrderData;
-use Biztory\Storefront\DTO\Services\SaleOrderItemData;
-use Biztory\Storefront\DTO\StoreOrderData;
-use Biztory\Storefront\DTO\StoreOrderItemData;
-use Illuminate\Http\Client\Response;
 use Illuminate\Support\Arr;
 use Spatie\LaravelData\Lazy;
+use Illuminate\Http\Client\Response;
+use Biztory\Storefront\Enums\Document;
+use Biztory\Storefront\DTO\StoreOrderData;
+use Biztory\Storefront\Enums\DocumentType;
+use Biztory\Storefront\DTO\StoreOrderItemData;
+use Biztory\Storefront\DTO\Services\SaleOrderData;
+use Biztory\Storefront\DTO\Services\SaleOrderItemData;
 
 class SaleOrderApiService extends BaseApiService
 {
@@ -100,11 +102,12 @@ class SaleOrderApiService extends BaseApiService
             //     'sale_order' => DocumentType::SaleOrder,
             //     default => null,
             // },
+            'type' => Document::SaleOrder->value,
         ])->except(
             'payment_term',
             'custom_fields',
             'terms',
-            'type',
+            // 'type',
             'currency_exchange_rate',
             'rounding'
         );

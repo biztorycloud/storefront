@@ -2,7 +2,9 @@
 
 namespace Biztory\Storefront\Listeners;
 
+use App\Quote;
 use App\Sale;
+use App\SaleOrder;
 use Illuminate\Queue\InteractsWithQueue;
 use Biztory\Storefront\DTO\StoreOrderData;
 use Biztory\Storefront\Events\OrderPlaced;
@@ -32,8 +34,14 @@ class NotificationEmailForOrderPlaced implements ShouldQueue
     public function handle(OrderPlaced $event)
     {
         /** @var array<StoreOrderData> $saleData */
-        $saleData = $event->data;
-        $sale = Sale::findOrfail($saleData['id']);
-        $this->service->emailInvoice($sale, 'emails.saleorder.order', 'Your Order');
+        $order = $event->data;
+        $model = match ($order['type']) {
+            'Invoice' => Sale::class,
+            'SaleOrder' => SaleOrder::class,
+            'Quote' => Quote::class,
+            default => $order['type'],
+        };
+        $invoice = $model::findOrfail($order['id']);
+        $this->service->emailInvoice($invoice, 'emails.saleorder.order', 'Your Order');
     }
 }

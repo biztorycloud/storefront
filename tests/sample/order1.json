@@ -1,0 +1,42 @@
+{
+    "invoice_date": "2024-07-08",
+    "payee": "Bryan Soong",
+    "payee_id": 2,
+    "total": 42,
+    "billing_addr_1": "Jalan Kinrara 6B, Bandar Kinrara",
+    "billing_city": "Puchong",
+    "billing_state": "Selangor",
+    "billing_zip": "47180",
+    "shipping_addr_1": "Jalan Kinrara 6B, Bandar Kinrara",
+    "shipping_city": "Puchong",
+    "shipping_state": "Selangor",
+    "shipping_zip": "47180",
+    "items": [
+        {
+            "item_id": 154,
+            "quantity": "1",
+            "price": 21,
+            "total": 21,
+            "code": "Taro Milk",
+            "description": "Taro Milk",
+            "tax_value": "0",
+            "tax_label": "SR-0",
+            "total_tax": 0
+        }
+    ],
+    "phone": "0163288370",
+    "email": "bryan@biztory.com.my",
+    "tax_inclusive": 0,
+    "payment_term_id": 2,
+    "terms": [
+        {
+            "date": "2024-07-22",
+            "amount": 42,
+            "remark": "100% | 14 days"
+        }
+    ],
+    "staff_id": null,
+    "_branch_id": 0,
+    "guest_mode": false,
+    "_subdomain": "bzaibetatesting"
+}
