@@ -22,6 +22,7 @@ class SaleOrderItemData extends Data
         public ?float $discount,
         public array|Optional $serial_numbers,
         public array|Optional $edited_serials,
+        public ?array $classifications,
         #[Max(9999999)]
         public ?float $total_tax = 0,
         #[Max(9999999)]

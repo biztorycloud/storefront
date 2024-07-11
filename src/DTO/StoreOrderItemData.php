@@ -3,11 +3,12 @@
 namespace Biztory\Storefront\DTO;
 
 use App\Product;
-use Spatie\LaravelData\Attributes\MapName;
-use Spatie\LaravelData\Attributes\Validation\Exists;
-use Spatie\LaravelData\Attributes\Validation\Min;
 use Spatie\LaravelData\Data;
+use App\Util\Facade\Settings;
 use Spatie\LaravelData\Optional;
+use Spatie\LaravelData\Attributes\MapName;
+use Spatie\LaravelData\Attributes\Validation\Min;
+use Spatie\LaravelData\Attributes\Validation\Exists;
 
 class StoreOrderItemData extends Data
 {
@@ -29,6 +30,16 @@ class StoreOrderItemData extends Data
         public ?string $tax_label,
         public ?float $tax_value,
         public int|Optional $id,
+        public ?array $classifications,
     ) {
+    }
+
+    public static function rules()
+    {
+        return [
+            'classifications' => [
+                Settings::get('enable_eInvoicing') ? 'required' : 'nullable',
+            ]
+        ];
     }
 }
