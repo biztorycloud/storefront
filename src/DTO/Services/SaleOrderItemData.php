@@ -46,6 +46,7 @@ class SaleOrderItemData extends Data
             discount: $faker->randomFloat(2, 0, 9999999),
             serial_numbers: [$faker->word(), $faker->word()],
             edited_serials: [$faker->word(), $faker->word()],
+            classifications: ['022'],
             total_tax: $faker->randomFloat(2, 0, 9999999),
             total: $faker->randomFloat(2, 0, 9999999),
         );
