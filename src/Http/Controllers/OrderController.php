@@ -8,9 +8,7 @@ use Illuminate\Routing\Controller;
 
 class OrderController extends Controller
 {
-    public function __construct(protected StoreRepositoryInterface $repository)
-    {
-    }
+    public function __construct(protected StoreRepositoryInterface $repository) {}
 
     public function store(StoreOrderData $payload): StoreOrderData
     {

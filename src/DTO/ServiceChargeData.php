@@ -16,6 +16,5 @@ class ServiceChargeData extends Data
         #[MapName('tax_amt')]
         public float $tax_amount,
         public float $total,
-    ) {
-    }
+    ) {}
 }

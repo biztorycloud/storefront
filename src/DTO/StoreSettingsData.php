@@ -2,16 +2,15 @@
 
 namespace Biztory\Storefront\DTO;
 
-use App\User;
 use App\Branch;
 use App\PaymentTerm;
-use Spatie\LaravelData\Data;
-use Spatie\LaravelData\Optional;
-use Biztory\Storefront\Enums\Document;
+use App\User;
 use Biztory\Storefront\Enums\CurrencyCode;
-use Biztory\Storefront\Enums\DocumentType;
+use Biztory\Storefront\Enums\Document;
 use Spatie\LaravelData\Attributes\Validation\Email;
 use Spatie\LaravelData\Attributes\Validation\Exists;
+use Spatie\LaravelData\Data;
+use Spatie\LaravelData\Optional;
 
 class StoreSettingsData extends Data
 {
@@ -39,6 +38,5 @@ class StoreSettingsData extends Data
         public bool|Optional $enable_postpaid,
         // notifications
         public NotificationSettingsData|Optional $notifications,
-    ) {
-    }
+    ) {}
 }

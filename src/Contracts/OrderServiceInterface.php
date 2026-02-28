@@ -23,4 +23,3 @@ interface OrderServiceInterface
      */
     public function getApiBaseUrl(): string;
 }
-

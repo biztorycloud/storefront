@@ -2,9 +2,9 @@
 
 namespace Biztory\Storefront\DTO\Services;
 
+use Biztory\Storefront\Enums\CurrencyCode;
 use Faker\Factory;
 use Spatie\LaravelData\Data;
-use Biztory\Storefront\Enums\CurrencyCode;
 
 class CurrencyData extends Data
 {
@@ -12,8 +12,7 @@ class CurrencyData extends Data
         public CurrencyCode $iso,
         public float $exchange_rate = 1,
         public bool $is_based = false,
-    ) {
-    }
+    ) {}
 
     public static function fromString(string $iso): self
     {

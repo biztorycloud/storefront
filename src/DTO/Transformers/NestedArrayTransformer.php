@@ -10,8 +10,7 @@ class NestedArrayTransformer implements Transformer
 {
     public function __construct(
         protected string $field
-    ) {
-    }
+    ) {}
 
     public function transform(DataProperty $property, mixed $value): mixed
     {

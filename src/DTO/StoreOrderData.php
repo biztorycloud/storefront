@@ -51,7 +51,7 @@ class StoreOrderData extends Data
          */
         // public array|Optional $meta,
         #[Exists(User::class, 'id', null, true)]
-        public int|null $staff_id,
+        public ?int $staff_id,
         #[Min(0)]
         public ?float $currency_total,
         public string $billing_addr_1,
@@ -122,8 +122,7 @@ class StoreOrderData extends Data
         /**
          * @var array<int, PaymentTermData>
          */
-
-        $terms = array_filter($payment_term->terms, fn (array $term) => isset($term['percent']) &&  $term['percent'] !== null);
+        $terms = array_filter($payment_term->terms, fn (array $term) => isset($term['percent']) && $term['percent'] !== null);
         $terms = PaymentTermData::collection($terms);
 
         $result = ScheduledTransactionData::collection([]);

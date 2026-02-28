@@ -4,8 +4,8 @@ namespace Biztory\Storefront\DTO\Services;
 
 use Faker\Factory;
 use Spatie\LaravelData\Data;
-use Spatie\LaravelData\Optional;
 use Spatie\LaravelData\DataCollection;
+use Spatie\LaravelData\Optional;
 
 class CustomFieldData extends Data
 {
@@ -15,8 +15,7 @@ class CustomFieldData extends Data
         public array|Optional $options,
         public bool|Optional $printable = false,
         public string|Optional $type = 'text',
-    ) {
-    }
+    ) {}
 
     public static function fake(): self
     {

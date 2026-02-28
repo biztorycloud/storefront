@@ -3,8 +3,6 @@
 namespace Biztory\Storefront\Listeners;
 
 use Biztory\Storefront\Events\OrderPlaced;
-use Biztory\Storefront\Listeners\ClearCartAfterPlacedOrder;
-use Biztory\Storefront\Listeners\NotificationEmailForOrderPlaced;
 
 class StorefrontSubscriber
 {

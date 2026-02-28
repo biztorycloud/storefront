@@ -3,10 +3,10 @@
 namespace Biztory\Storefront\DTO\Services;
 
 use Faker\Factory;
-use Spatie\LaravelData\Data;
-use Spatie\LaravelData\Optional;
-use Spatie\LaravelData\DataCollection;
 use Spatie\LaravelData\Attributes\Validation\Max;
+use Spatie\LaravelData\Data;
+use Spatie\LaravelData\DataCollection;
+use Spatie\LaravelData\Optional;
 
 class SaleOrderItemData extends Data
 {
@@ -27,8 +27,7 @@ class SaleOrderItemData extends Data
         public ?float $total_tax = 0,
         #[Max(9999999)]
         public float $total = 0,
-    ) {
-    }
+    ) {}
 
     public static function fake(): self
     {
