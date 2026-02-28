@@ -2,19 +2,19 @@
 
 namespace Biztory\Storefront\DTO\Services;
 
-use Faker\Factory;
 use App\PaymentTerm;
-use Spatie\LaravelData\Data;
-use Spatie\LaravelData\Lazy;
-use Spatie\LaravelData\Optional;
-use Spatie\LaravelData\DataCollection;
 use Biztory\Storefront\Enums\RoundingMode;
+use Faker\Factory;
+use Spatie\LaravelData\Attributes\DataCollectionOf;
+use Spatie\LaravelData\Attributes\Validation\Date;
+use Spatie\LaravelData\Attributes\Validation\Email;
 use Spatie\LaravelData\Attributes\Validation\In;
 use Spatie\LaravelData\Attributes\Validation\Max;
-use Spatie\LaravelData\Attributes\Validation\Date;
-use Spatie\LaravelData\Attributes\DataCollectionOf;
-use Spatie\LaravelData\Attributes\Validation\Email;
 use Spatie\LaravelData\Attributes\Validation\RequiredIf;
+use Spatie\LaravelData\Data;
+use Spatie\LaravelData\DataCollection;
+use Spatie\LaravelData\Lazy;
+use Spatie\LaravelData\Optional;
 
 class SaleOrderData extends Data
 {
@@ -95,8 +95,7 @@ class SaleOrderData extends Data
          */
         public array|Optional|Lazy $meta,
         public bool $update_payee = false,
-    ) {
-    }
+    ) {}
 
     public static function fake(): self
     {

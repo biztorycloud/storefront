@@ -2,15 +2,14 @@
 
 namespace Biztory\Storefront;
 
-use Illuminate\Contracts\Http\Kernel;
-use Spatie\LaravelPackageTools\Package;
 use App\Http\Middleware\ApiDataResponse;
-use Biztory\Storefront\Repositories\CartRepository;
-use Biztory\Storefront\Repositories\StoreRepository;
-use Biztory\Storefront\Providers\EventServiceProvider;
-use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Biztory\Storefront\Contracts\CartRepositoryInterface;
 use Biztory\Storefront\Contracts\StoreRepositoryInterface;
+use Biztory\Storefront\Repositories\CartRepository;
+use Biztory\Storefront\Repositories\StoreRepository;
+use Illuminate\Contracts\Http\Kernel;
+use Spatie\LaravelPackageTools\Package;
+use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class StorefrontServiceProvider extends PackageServiceProvider
 {
@@ -34,7 +33,7 @@ class StorefrontServiceProvider extends PackageServiceProvider
     {
         // Register any other service providers needed
         $this->app->register(\Spatie\LaravelData\LaravelDataServiceProvider::class);
-        
+
         $this->app->bind(StoreRepositoryInterface::class, StoreRepository::class);
         $this->app->bind(CartRepositoryInterface::class, CartRepository::class);
     }

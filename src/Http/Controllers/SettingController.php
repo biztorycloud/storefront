@@ -9,9 +9,7 @@ use Illuminate\Routing\Controller;
 
 class SettingController extends Controller
 {
-    public function __construct(private StoreRepositoryInterface $repository)
-    {
-    }
+    public function __construct(private StoreRepositoryInterface $repository) {}
 
     public function get(Request $request): StoreSettingsData
     {

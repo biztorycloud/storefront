@@ -6,14 +6,11 @@ use Biztory\Storefront\DTO\CouponData;
 use Biztory\Storefront\Enums\DiscountType;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Spatie\LaravelData\Attributes\DataCollectionOf;
 use Spatie\LaravelData\DataCollection;
 
 class CouponController extends Controller
 {
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 
     /**
      * @return DataCollection<CouponData>

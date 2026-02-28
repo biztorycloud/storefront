@@ -14,8 +14,7 @@ class CartItemData extends Data
         public string $name,
         public float $quantity,
         public float $price,
-    ) {
-    }
+    ) {}
 
     public static function rules(): array
     {

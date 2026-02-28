@@ -2,6 +2,4 @@
 
 namespace Biztory\Storefront;
 
-class Storefront
-{
-}
+class Storefront {}

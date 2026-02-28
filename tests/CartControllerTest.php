@@ -7,14 +7,13 @@ use Biztory\Storefront\Http\Controllers\CartController;
 use Biztory\Storefront\Repositories\CartRepository;
 
 describe('CartController', function () {
-    $ctrl = new CartController(new CartRepository());
+    $ctrl = new CartController(new CartRepository);
 
     it('can get cart', function () use ($ctrl) {
         $response = $ctrl->get(request());
         expect($response)
             ->toBeInstanceOf(CartData::class)
-            ->toHaveCount(0)
-        ;
+            ->toHaveCount(0);
     });
 });
 

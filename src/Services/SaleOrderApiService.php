@@ -2,15 +2,15 @@
 
 namespace Biztory\Storefront\Services;
 
-use Illuminate\Support\Arr;
-use Spatie\LaravelData\Lazy;
-use Illuminate\Http\Client\Response;
-use Biztory\Storefront\Enums\Document;
-use Biztory\Storefront\DTO\StoreOrderData;
-use Biztory\Storefront\Enums\DocumentType;
-use Biztory\Storefront\DTO\StoreOrderItemData;
 use Biztory\Storefront\DTO\Services\SaleOrderData;
 use Biztory\Storefront\DTO\Services\SaleOrderItemData;
+use Biztory\Storefront\DTO\StoreOrderData;
+use Biztory\Storefront\DTO\StoreOrderItemData;
+use Biztory\Storefront\Enums\Document;
+use Biztory\Storefront\Enums\DocumentType;
+use Illuminate\Http\Client\Response;
+use Illuminate\Support\Arr;
+use Spatie\LaravelData\Lazy;
 
 class SaleOrderApiService extends BaseApiService
 {
@@ -28,7 +28,7 @@ class SaleOrderApiService extends BaseApiService
                 'currency' => [
                     'iso' => $data->currency_iso,
                     'exchange_rate' => $data->currency_exchange_rate,
-                ]
+                ],
             ] : []),
             ...($data->discount ? ['discount' => [
                 ...$data->discount->toArray(),
@@ -63,7 +63,7 @@ class SaleOrderApiService extends BaseApiService
         // call the api
         $response = $this->callApi($this->getApiBaseUrl(), 'post', $payload->toArray());
         // handle response
-        if (!$response->successful()) {
+        if (! $response->successful()) {
             $response->throw();
         }
 
@@ -91,6 +91,7 @@ class SaleOrderApiService extends BaseApiService
                 ]
             )
         );
+
         return StoreOrderData::from([
             ...$response_data,
             'items' => Lazy::create(fn () => $items),

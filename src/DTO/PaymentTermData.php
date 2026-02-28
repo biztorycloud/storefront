@@ -20,6 +20,5 @@ class PaymentTermData extends Data
         public PaymentTermUnitGroup $due_unit_group,
         #[Min(0)]
         public ?int $due_num,
-    ) {
-    }
+    ) {}
 }

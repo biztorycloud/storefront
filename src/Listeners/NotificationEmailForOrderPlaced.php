@@ -5,16 +5,16 @@ namespace Biztory\Storefront\Listeners;
 use App\Quote;
 use App\Sale;
 use App\SaleOrder;
-use Illuminate\Queue\InteractsWithQueue;
+use Biztory\PaymentGateway\Services\EmailService;
 use Biztory\Storefront\DTO\StoreOrderData;
 use Biztory\Storefront\Events\OrderPlaced;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Biztory\PaymentGateway\Services\EmailService;
+use Illuminate\Queue\InteractsWithQueue;
 
 class NotificationEmailForOrderPlaced implements ShouldQueue
 {
     use InteractsWithQueue;
-    
+
     /**
      * Create the event listener.
      *

@@ -17,8 +17,7 @@ class GatewayData extends Data
         public int $payment_method_id,
         public string $display_name,
         public ?string $description = null,
-    ) {
-    }
+    ) {}
 
     // when creating from Request
     public static function fromRequest(Request $request, PaymentGatewayRepository $repository): self

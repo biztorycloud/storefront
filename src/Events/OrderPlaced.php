@@ -14,7 +14,8 @@ class OrderPlaced
 
     /**
      * Create a new event instance.
-     * @param array<StoreOrderData> $data
+     *
+     * @param  array<StoreOrderData>  $data
      * @return void
      */
     public function __construct(public array $data)

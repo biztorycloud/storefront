@@ -22,11 +22,11 @@ abstract class BaseApiService
     {
         // try to call api, else throw exception
         $response = Http::withHeaders([
-                ...$headers,
-                'x-subdomain' => Tenant::current()->domain,
-                'X-Trace-ID' => config('_trace_id'),
-                'Authorization' => request()->header('Authorization'),
-            ])
+            ...$headers,
+            'x-subdomain' => Tenant::current()->domain,
+            'X-Trace-ID' => config('_trace_id'),
+            'Authorization' => request()->header('Authorization'),
+        ])
             ->$method($url, $payload)
             ->throw();
 

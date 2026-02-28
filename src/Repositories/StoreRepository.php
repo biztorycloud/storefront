@@ -47,7 +47,7 @@ class StoreRepository implements StoreRepositoryInterface
             // TODO:
             // 'invoice' => new InvoiceService(),
             // 'quote' => new QuoteService(),
-            Document::SaleOrder => new SaleOrderApiService(),
+            Document::SaleOrder => new SaleOrderApiService,
             default => throw new \Exception('Invalid document type'),
         };
         $response = $api->store($payload);

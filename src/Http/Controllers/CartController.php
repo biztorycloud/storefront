@@ -9,9 +9,7 @@ use Illuminate\Routing\Controller;
 
 class CartController extends Controller
 {
-    public function __construct(protected CartRepositoryInterface $repository)
-    {
-    }
+    public function __construct(protected CartRepositoryInterface $repository) {}
 
     public function get(Request $request): CartData
     {

@@ -3,11 +3,11 @@
 namespace Biztory\Storefront\DTO\Services;
 
 use Faker\Factory;
-use Spatie\LaravelData\Data;
-use Spatie\LaravelData\Optional;
-use Spatie\LaravelData\Attributes\Validation\Max;
 use Spatie\LaravelData\Attributes\Validation\Date;
+use Spatie\LaravelData\Attributes\Validation\Max;
+use Spatie\LaravelData\Data;
 use Spatie\LaravelData\DataCollection;
+use Spatie\LaravelData\Optional;
 
 class ScheduledTransactionData extends Data
 {
@@ -19,8 +19,7 @@ class ScheduledTransactionData extends Data
         public Optional|int $id,
         #[Max(255)]
         public Optional|string $remark,
-    ) {
-    }
+    ) {}
 
     public static function fake(): self
     {

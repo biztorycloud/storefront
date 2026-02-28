@@ -3,9 +3,9 @@
 namespace Biztory\Storefront\DTO\Services;
 
 use Faker\Factory;
-use Spatie\LaravelData\Data;
 use Spatie\LaravelData\Attributes\Validation\In;
 use Spatie\LaravelData\Attributes\Validation\Min;
+use Spatie\LaravelData\Data;
 
 class DiscountServiceChargeData extends Data
 {
@@ -21,8 +21,7 @@ class DiscountServiceChargeData extends Data
         #[Min(0)]
         public float $total,
         public bool $shown = false,
-    ) {
-    }
+    ) {}
 
     public static function fake(): self
     {
