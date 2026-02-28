@@ -134,6 +134,7 @@ enum CurrencyCode: string
     case SOS = 'SOS';
     case SPL = 'SPL';
     case SRD = 'SRD';
+    case SSP = 'SSP';
     case STN = 'STN';
     case SVC = 'SVC';
     case SYP = 'SYP';
