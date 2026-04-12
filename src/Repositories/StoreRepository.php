@@ -63,7 +63,7 @@ class StoreRepository implements StoreRepositoryInterface
     private function getDefaults(): array
     {
         return StoreSettingsData::empty(
-            [
+            array_filter([
                 'name' => Settings::get('company_name'),
                 'email' => Settings::get('company_email'),
                 'logo' => Settings::get('company_logo'),
@@ -77,7 +77,7 @@ class StoreRepository implements StoreRepositoryInterface
                 'enable_guest_checkout' => config('storefront.enable_guest_checkout'),
                 'enable_postpaid' => config('storefront.enable_postpaid'),
                 'notifications' => NotificationSettingsData::from([]),
-            ]
+            ], fn ($v) => $v !== '' && !is_null($v))
         );
     }
 
